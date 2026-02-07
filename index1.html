@@ -1,0 +1,78 @@
+<html>
+
+<head>
+
+    <title>Random Color Generater</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .main {
+            width: 100vw;
+            height: 100vh;
+            background-color: bisque;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .box {
+            width: 25%;
+            height: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* border: 2px solid black; */
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main"></div>
+</body>
+<script>
+    var maindiv = document.querySelector(".main")
+    console.log(maindiv);
+
+    for (var i = 0; i <= 103; i++) {
+        var boxdiv = document.createElement("div")
+        boxdiv.classList.add("box")
+        maindiv.append(boxdiv)
+        var redclr = parseInt(Math.random() * 255).toString(16)
+        var greenclr = parseInt(Math.random() * 255).toString(16)
+        var blueclr = parseInt(Math.random() * 255).toString(16)
+
+        var newhxcode = "#" + redclr + blueclr + greenclr
+        // console.log(newhxcode,"new hx code");
+
+        boxdiv.style.background = newhxcode
+        boxdiv.innerHTML = newhxcode
+
+        // copied
+        boxdiv.addEventListener(
+            'click',
+            function () {
+                var newhxcode = this.innerText
+                console.log(newhxcode);
+                navigator.clipboard.writeText(newhxcode)
+                this.innerText = "color copied "
+
+                setTimeout(() => {
+                 this.innerText = newhxcode
+                    ;
+                }, 1000);
+               
+        
+
+            }
+        )
+    }
+</script>
+
+</html>
